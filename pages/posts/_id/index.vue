@@ -58,9 +58,15 @@
   margin: 0 10px;
 }
 
+.post-feedback{
+ text-align: center;
+}
+
 .post-feedback a {
   color: red;
   text-decoration: none;
+  text-align: center;
+
 }
 
 .post-feedback a:hover,
