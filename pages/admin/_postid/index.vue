@@ -20,7 +20,7 @@ export default {
         author: 'Alina',
         title: 'My awsome Post',
         content: 'Super amazing, thanks for that!',
-        thumbnailLink: 'https://media.istockphoto.com/photos/abstract-blue-digital-background-picture-id1146532466?k=20&m=1146532466&s=612x612&w=0&h=NjZrRzJH4nvxVmTGTvMrMrPGQ03fDNYTmRNoEiNSeCQ='
+        thumbnail: 'https://media.istockphoto.com/photos/abstract-blue-digital-background-picture-id1146532466?k=20&m=1146532466&s=612x612&w=0&h=NjZrRzJH4nvxVmTGTvMrMrPGQ03fDNYTmRNoEiNSeCQ='
       }
     }
   }
