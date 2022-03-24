@@ -14,35 +14,42 @@ export default {
   components: {
     PostList,
   },
-  asyncData(context, callback) {
-    console.log(context)
-    setTimeout(() => {
-      callback(null, {
-        loadedPosts: [
-         {
-          id: "1",
-          title: "First Post",
-          previewText: "This is our first post!",
-          thumbnail:
-           "https://media.istockphoto.com/photos/abstract-blue-digital-background-picture-id1146532466?k=20&m=1146532466&s=612x612&w=0&h=NjZrRzJH4nvxVmTGTvMrMrPGQ03fDNYTmRNoEiNSeCQ="
-         },
-         {
-         id: "2",
-         title: "Second Post",
-         previewText: "This is our second post!",
-          thumbnail:
+  asyncData(context) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({
+          loadedPosts: [
+           {
+            id: "1",
+            title: "First Post",
+            previewText: "This is our first post!",
+            thumbnail:
             "https://media.istockphoto.com/photos/abstract-blue-digital-background-picture-id1146532466?k=20&m=1146532466&s=612x612&w=0&h=NjZrRzJH4nvxVmTGTvMrMrPGQ03fDNYTmRNoEiNSeCQ="
-        }
-      ]
-     });
-    }, 1500);
+           },
+           {
+            id: "2",
+            title: "Second Post",
+            previewText: "This is our second post!",
+            thumbnail:
+            "https://media.istockphoto.com/photos/abstract-blue-digital-background-picture-id1146532466?k=20&m=1146532466&s=612x612&w=0&h=NjZrRzJH4nvxVmTGTvMrMrPGQ03fDNYTmRNoEiNSeCQ="
+           }
+          ]
+       });
+    }, 1000);
+  })
+  .then(data => {
+    return data
+  })
+  .catch(e => {
+      context.error(new Error())
+    })
   },
+}
   // data() {
   //   return {
   //     loadedPosts: []
   //   };
   // },
-};
 </script>
 
 
