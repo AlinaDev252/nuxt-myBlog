@@ -51,10 +51,10 @@ const createStore = () => {
               ".json",
             editedPost
           )
-          .then((res) => {
+          .then( res => {
             vuexContext.commit('editPost', editedPost)
           })
-          .catch((e) => console.log(e));
+          .catch( e => console.log(e));
       },
       setPosts(vuexContext, posts) {
         vuexContext.commit('setPosts', posts);
