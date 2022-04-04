@@ -21,7 +21,7 @@ export default {
   },
 
   // Customize the progress-bar color
-  loading: { color: '#fa923f', height: '4px', duration: 5000 },
+  loading: { color: "#fa923f", height: "4px", duration: 5000 },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
@@ -40,4 +40,9 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+  env: {
+    baseUrl:
+      process.env.BASE_URL ||
+      "https://nuxt-blog-63bb3-default-rtdb.firebaseio.com",
+  },
 };
