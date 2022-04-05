@@ -41,7 +41,7 @@ export default {
     baseURL:
       process.env.BASE_URL ||
       "https://nuxt-blog-63bb3-default-rtdb.firebaseio.com",
-    credentials: false
+    credentials: false,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -50,6 +50,7 @@ export default {
     baseUrl:
       process.env.BASE_URL ||
       "https://nuxt-blog-63bb3-default-rtdb.firebaseio.com",
+    fbApiKey: "AIzaSyBDUGY-vMevwaIdvNsYZAMfTSwLi52NU7I",
   },
   transition: {
     name: "fade",
