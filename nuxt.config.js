@@ -1,3 +1,5 @@
+const bodyParser = require('body-parser');
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -43,7 +45,7 @@ export default {
       "https://nuxt-blog-63bb3-default-rtdb.firebaseio.com",
     credentials: false,
   },
-  
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
   env: {
@@ -59,4 +61,8 @@ export default {
   // router: {
   //   middleware: 'log',
   // },
+  serverMiddleware: [
+    bodyParser.json(),
+    '~/api'
+  ],
 };

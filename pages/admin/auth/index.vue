@@ -16,20 +16,19 @@
 </template>
 
 <script>
-
 export default {
-  name: 'AdminAuthPage',
-  layout: 'admin',
+  name: "AdminAuthPage",
+  layout: "admin",
   data() {
     return {
       isLogin: true,
-      email: '',
-      password: ''
+      email: "",
+      password: ""
     };
   },
   methods: {
     onSubmit() {
-      this.$store.dispatch('authenticateUser', {
+      this.$store.dispatch("authenticateUser", {
         isLogin: this.isLogin,
         email: this.email,
         password: this.password
@@ -37,9 +36,9 @@ export default {
       .then(() => {
         this.$router.push('/admin');
       });
-    },
-  },
-}
+    }
+  }
+};
 </script>
 
 <style scoped>
@@ -56,5 +55,4 @@ export default {
   padding: 10px;
   box-sizing: border-box;
 }
-
 </style>
