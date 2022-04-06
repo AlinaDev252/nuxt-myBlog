@@ -1,4 +1,5 @@
 const bodyParser = require('body-parser');
+const axios = require('axios');
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -65,4 +66,16 @@ export default {
     bodyParser.json(),
     '~/api'
   ],
+  generate: {
+    routes: function () {
+      return axios.get("https://nuxt-blog-63bb3-default-rtdb.firebaseio.com/posts.json")
+        .then(res => {
+          const routes = [];
+          for (const key in res.data) {
+            routes.push('/posts/' + key)
+          }
+          return routes
+        })
+    }
+  }
 };
