@@ -4,7 +4,7 @@ const createStore = () => {
   return new Vuex.Store({
     state: {
       loadedPosts: [],
-      token: null
+      token: null,
     },
     mutations: {
       setPosts(state, posts) {
@@ -16,7 +16,7 @@ const createStore = () => {
       editPost(state, editedPost) {
         const postIndex = state.loadedPosts.findIndex(
           post => post.id === editedPost.id);
-        state.loadedPosts[postsIndex] = editedPost
+        state.loadedPosts[postIndex] = editedPost;
       },
       setToken(state, token) {
         state.token = token
@@ -41,7 +41,9 @@ const createStore = () => {
           updatedDate: new Date(),
         }
         return this.$axios
-          .$post("https://nuxt-blog-63bb3-default-rtdb.firebaseio.com/posts.json", createdPost )
+          .$post("https://nuxt-blog-63bb3-default-rtdb.firebaseio.com/posts.json?auth=" +
+            vuexContext.state.token,
+          createdPost)
           .then(data => {
             vuexContext.commit('addPost', { ...createdPost, id: data.name })
           })
@@ -52,9 +54,9 @@ const createStore = () => {
           .$put(
             "https://nuxt-blog-63bb3-default-rtdb.firebaseio.com/posts/" +
               editedPost.id +
-              ".json",
-            editedPost
-          )
+              ".json?auth=" +
+              vuexContext.state.token,
+            editedPost)
           .then( res => {
             vuexContext.commit('editPost', editedPost)
           })
@@ -70,7 +72,7 @@ const createStore = () => {
          process.env.fbApiKey
         }
         return this.$axios
-          .$post(authUrl,{
+          .$post(authUrl, {
             email: authData.email,
             password: authData.password,
             returnSecureToken: true,
@@ -84,9 +86,13 @@ const createStore = () => {
     getters: {
       loadedPosts(state) {
         return state.loadedPosts;
-      }
+      },
+      // checks if we have a token or not
+      isAuthenticated(state) {
+        return state.token != null
+      },
     }
   }
 )}
 
-export default createStore
+export default createStore;

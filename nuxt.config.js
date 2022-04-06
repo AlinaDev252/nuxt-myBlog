@@ -43,7 +43,7 @@ export default {
       "https://nuxt-blog-63bb3-default-rtdb.firebaseio.com",
     credentials: false,
   },
-
+  
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
   env: {
