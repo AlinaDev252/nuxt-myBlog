@@ -62,23 +62,21 @@ export default {
   // router: {
   //   middleware: 'log',
   // },
-  serverMiddleware: [
-    bodyParser.json(),
-    '~/api'
-  ],
+  serverMiddleware: [bodyParser.json(), "~/api"],
   generate: {
     routes: function () {
-      return axios.get("https://nuxt-blog-63bb3-default-rtdb.firebaseio.com/posts.json")
-        .then(res => {
+      return axios
+        .get("https://nuxt-blog-63bb3-default-rtdb.firebaseio.com/posts.json")
+        .then((res) => {
           const routes = [];
           for (const key in res.data) {
             routes.push({
-              route: '/posts/' + key,
-              payload: {postData: res.data[key]}
-            })
+              route: "/posts/" + key,
+              payload: { postData: res.data[key] },
+            });
           }
-          return routes
-        })
-    }
-  }
+          return routes;
+        });
+    },
+  },
 };

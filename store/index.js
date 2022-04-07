@@ -47,7 +47,7 @@ const createStore = () => {
         };
         return this.$axios
           .$post(
-            "https://nuxt-blog.firebaseio.com/posts.json?auth=" +
+            "https://nuxt-blog-63bb3-default-rtdb.firebaseio.com/posts.json?auth=" +
               vuexContext.state.token,
             createdPost
           )
@@ -59,7 +59,7 @@ const createStore = () => {
       editPost(vuexContext, editedPost) {
         return this.$axios
           .$put(
-            "https://nuxt-blog.firebaseio.com/posts/" +
+            "https://nuxt-blog-63bb3-default-rtdb.firebaseio.com/posts/" +
               editedPost.id +
               ".json?auth=" +
               vuexContext.state.token,
@@ -76,11 +76,11 @@ const createStore = () => {
       authenticateUser(vuexContext, authData) {
         let authUrl =
           "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" +
-          process.env.fbAPIKey;
+          process.env.fbApiKey;
         if (!authData.isLogin) {
           authUrl =
             "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" +
-            process.env.fbAPIKey;
+            process.env.fbApiKey;
         }
         return this.$axios
           .$post(authUrl, {
@@ -113,7 +113,7 @@ const createStore = () => {
           }
           const jwtCookie = req.headers.cookie
             .split(";")
-            .find((c) => c.trim().startsWith("jwt="));
+            .find(c => c.trim().startsWith("jwt="));
           if (!jwtCookie) {
             return;
           }
